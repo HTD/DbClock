@@ -11,6 +11,9 @@
     <Description>Deutsche Bahn Station Clock</Description>
     <Copyright>(c)2020 by CodeDog, All rights reserverd.</Copyright>
     <PackageIcon>Icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/HTD/DbClock</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/HTD/DbClock</RepositoryUrl>
+    <PackageReleaseNotes>I like trains.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
