@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen"
         Title="DB Clock" >
   <Grid>
-    <local:DbClockDial x:Name="Clock" Time="{x:Static sys:DateTime.Now}" />
+    <local:DbClockDial x:Name="Clock" Time="{x:Static sys:DateTime.Now}" Margin="20" />
   </Grid>
   <Window.ContextMenu>
     <ContextMenu>

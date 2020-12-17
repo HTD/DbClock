@@ -34,6 +34,12 @@ namespace DbClock {
         #region Drawing
 
         public void DrawDial(Color color) {
+            var dial = new Ellipse {
+                Width = DialDiameter,
+                Height = DialDiameter,
+                Fill = new SolidColorBrush(DialColor),
+                RenderTransform = new TranslateTransform { X = (600 - DialDiameter) / 2, Y = (600 - DialDiameter) / 2 } };
+            Target.Add(dial);
             for (int i = 0; i < 360; i += 6) {
                 var isMainHour = (i % 90) == 0;
                 var isSmallHour = !isMainHour && ((i % 30) == 0);
@@ -160,6 +166,10 @@ namespace DbClock {
             DefaultValue = ColorConverter.ConvertFromString("#333")
         });
 
+        public static readonly DependencyProperty DialColorProperty = DependencyProperty.Register(nameof(DialColor), typeof(Color), typeof(DbClockDial), new PropertyMetadata {
+            DefaultValue = ColorConverter.ConvertFromString("#beee")
+        });
+
         public static readonly DependencyProperty TimeProperty = DependencyProperty.Register(nameof(Time), typeof(DateTime), typeof(DbClockDial), new PropertyMetadata {
             PropertyChangedCallback = new PropertyChangedCallback(OnTimeChanged)
         });
@@ -178,6 +188,8 @@ namespace DbClock {
             }
         }
 
+        public Color DialColor { get => (Color)GetValue(DialColorProperty); set => SetValue(DialColorProperty, value); }
+
         public Color TicksColor { get => (Color)GetValue(TicksColorProperty); set => SetValue(TicksColorProperty, value); }
 
         public Color HandsColor { get => (Color)GetValue(HandsColorProperty); set => SetValue(HandsColorProperty, value); }
@@ -185,6 +197,7 @@ namespace DbClock {
         public Color SecondsColor { get => (Color)GetValue(SecondsColorProperty); set => SetValue(SecondsColorProperty, value); }
 
         public Color DiscColor { get => (Color)GetValue(DiscColorProperty); set => SetValue(DiscColorProperty, value); }
+        
 
         public DateTime Time { get => (DateTime)GetValue(TimeProperty); set => SetValue(TimeProperty, value); }
 
@@ -194,6 +207,7 @@ namespace DbClock {
 
         // dimmensions for 600 units for tickcs outer diameter
 
+        public const double DialDiameter = 632;
         public const double MainHourTickWidth = 24;
         public const double MainHourTickHeight = 94;
         public const double SmallerHourTickWidth = 24;
